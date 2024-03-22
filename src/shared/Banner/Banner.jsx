@@ -41,7 +41,7 @@ const Banner = () => {
                             <h1 className='text-6xl mt-2 text-gray-800 font-bold'>MEN FASSHION</h1>
                             <div className="btn text-center mt-5">
                                 <button
-                                    className='font-bold rounded-sm hover:bg-rose-900  bg-[#5e1130b2] px-4 py-2 text-white'
+                                    className='font-bold rounded-sm hover:bg-rose-900  bg-[#77153db2] px-4 py-2 text-white'
                                 >
                                     SHOP NOW
                                 </button>

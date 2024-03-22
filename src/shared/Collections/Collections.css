@@ -1,0 +1,10 @@
+
+.man_collection{
+    background-image: url(../../assets/images/collections/man.jpg);
+    background-repeat: no-repeat;
+   
+}
+.women_collection{
+    background-image: url(../../assets/images/collections/women.jpg);
+    background-repeat: no-repeat;
+}
