@@ -1,8 +1,21 @@
-const Navbar = () => {
-    return(
-        <div>
-            <h1 className="text-green-800">this is navbar</h1>
+import Logo from "./Logo";
+import MenuDropdown from "./MenuDropdown";
+import NavbarItems from "./NavbarItems";
+
+const Navber = () => {
+    return (
+        <div className="fixed w-full bg-white z-10 shadow-sm">
+            <div className="py-4 border-b-[1px]">
+                <div className="container mx-auto">
+                    <div className="flex flex-row items-center justify-between gap-3">
+                        <Logo></Logo>
+                        <NavbarItems></NavbarItems>
+                        <MenuDropdown></MenuDropdown>
+                    </div>
+                </div>
+            </div>
         </div>
-    )
-}
-export default Navbar;
+    );
+};
+
+export default Navber;
