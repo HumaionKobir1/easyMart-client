@@ -7,27 +7,27 @@ const NavbarItems = () => {
             
             <Link
               to='/'
-              className=' px-3 py-2 rounded-lg hover:bg-neutral-100 hover:text-black transition font-semibold'
+              className=' px-3 py-2 rounded-lg hover:bg-neutral-100 hover:text-black text-white transition font-semibold'
             >
               Home
             </Link>
              
              <Link
               to='/allProduct'
-              className=' px-3 py-2 rounded-lg hover:bg-neutral-100  hover:text-black transition font-semibold'
+              className=' px-3 py-2 rounded-lg hover:bg-neutral-100  hover:text-black text-white transition font-semibold'
             >
               AllProducts
             </Link>
             
             <Link
               to='/blog'
-              className=' px-3 py-2 rounded-lg hover:bg-neutral-100 hover:text-black transition font-semibold'
+              className=' px-3 py-2 rounded-lg hover:bg-neutral-100 hover:text-black text-white transition font-semibold'
             >
               blog
             </Link>
             <Link
               to='/contact'
-              className=' px-3 py-2 rounded-lg hover:bg-neutral-100 hover:text-black transition font-semibold'
+              className=' px-3 py-2 rounded-lg hover:bg-neutral-100 hover:text-black text-white transition font-semibold'
             >
               Contact
             </Link>

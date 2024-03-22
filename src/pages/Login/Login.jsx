@@ -1,29 +1,45 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
-import { useRef } from 'react'
+import { useContext, useRef } from 'react'
 import {TbFidgetSpinner} from 'react-icons/tb'
+import { AuthContext } from '../../providers/AuthProviders'
 
 const Login = () => {
-    // const navigate = useNavigate();
-    // const location = useLocation();
-    // const from = location.state?.from?.pathname || '/';
-
+    const {signIn, loading, signInWithGoogle} = useContext(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const emailRef = useRef();
 
-    // Handle submit
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        console.log(email, password);
-    }
+    const handleLogin = event => {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.email.value;
+      const password = form.password.value;
+      console.log(email, password);
 
+      signIn(email, password)
+      .then(result => {
+          const user = result.user;
+          console.log(user);
+          
+      })
+      .catch(error => console.log(error.message))
+  }
 
-    // Handle Google signIn
-    const handleGoogleSignIn = () => {
-        
-    }
+  const handleGoogleSignIn = () => {
+      signInWithGoogle()
+      .then(result => {
+          const loggedUser = result.user;
+          console.log(loggedUser);
+          navigate(from, {replace: true});
+          
+      })
+      .catch(error => {
+          setError((error.message).slice(10, 50))
+
+      });
+  }
 
     // handle password reset
     const handleReset = () => {
@@ -40,7 +56,7 @@ const Login = () => {
           </p>
         </div>
         <form
-        onSubmit={handleSubmit}
+        onSubmit={handleLogin}
           noValidate=''
           action=''
           className='space-y-6 ng-untouched ng-pristine ng-valid'
@@ -83,7 +99,7 @@ const Login = () => {
               type='submit'
               className='bg-rose-500 w-full rounded-md py-3 text-white'
             >
-                continue
+                    {loading?<TbFidgetSpinner size={24} className='mx-auto animate-spin'></TbFidgetSpinner> : 'Sign In'}
             </button>
           </div>
         </form>

@@ -1,11 +1,17 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
+import { toast } from 'react-hot-toast'
 import signupImg from '../../assets/images/signup/signin.jpg'
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProviders';
+import { TbFidgetSpinner } from 'react-icons/tb';
 
 const SignUp = () => {
+  const { setLoading, loading, signInWithGoogle, createUser, updateUserProfile} = useContext(AuthContext);
+  const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
-
+  const img_hosting_token = import.meta.env.VITE_IMGBB_KEY;
 
   // Handle user registration
   const handleSubmit = event => {
@@ -14,20 +20,68 @@ const SignUp = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+
     // Image Upload
     const image = form.image.files[0]
     const formData = new FormData();
     formData.append('image', image);
-    console.log( name, email, password,  formData);
+    const url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+
+    fetch(url, {
+      method: 'POST',
+      body: formData,
+    })
+    .then(res => res.json())
+    .then(imageData => {
+     const imageUrl = (imageData.data.display_url)
+      createUser(email, password)
+      .then(result => {        
+        console.log(result);
+        toast.success('SignUp successful')
+        navigate(from, {replace: true});
+        updateUserProfile(name, imageUrl)
+        .then(() => {
+        // save user to db
+          saveUser(result.user)
+        })
+        .catch(error => {
+            setLoading(false);
+            console.log(error.message)
+            toast.error(error.message);
+            
+        })
+      })
+      .catch(error => {
+          setLoading(false);
+          console.log(error.message)
+          toast.error(error.message);
+          
+      })
+
+    })
+    .catch(err => {
+      setLoading(false);
+      console.log(err.message)
+      toast.error(err.message);
+    })
     
   }
 
 
   // Handle Google signIn
   const handleGoogleSignIn = () => {
-    
+    signInWithGoogle()
+    .then(result => {
+      // save user to db
+      saveUser(result.user)
+        navigate(from, {replace: true});
+    })
+    .catch(error => {
+        setLoading(false);
+        toast.error(error.message);
+        
+    })
 }
-
   return (
     <div className='flex shadow-2xl bg-base-100 justify-center items-center min-h-screen'>
     <div className='w-[40%]'>
@@ -106,7 +160,7 @@ const SignUp = () => {
               type='submit'
               className='bg-rose-500 w-full rounded-md py-3 text-white'
             >
-                Continue
+                {loading?<TbFidgetSpinner size={24} className='mx-auto animate-spin'></TbFidgetSpinner> : 'Continue'}
             </button>
           </div>
         </form>
