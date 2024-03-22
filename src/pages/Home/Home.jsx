@@ -1,7 +1,13 @@
+import Banner from "../../shared/Banner/Banner";
+import Curved from "../../shared/Curved/Curved";
+import Offer from "../../shared/Offer/Offer";
+
 const Home = () => {
     return(
         <div>
-            <h1 className="text-green-800 text-5xl">this is Home page</h1>
+            <Banner></Banner>
+            <Offer></Offer>
+            <Curved></Curved>
         </div>
     )
 }

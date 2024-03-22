@@ -1,0 +1,12 @@
+.banner1{
+    background-image: url(../../assets/images/banner/man.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.banner2{
+    background-image: url(../../assets/images/banner/women.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

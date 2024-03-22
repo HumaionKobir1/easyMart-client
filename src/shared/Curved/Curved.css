@@ -1,0 +1,38 @@
+.curved-div {
+    background: #e2e8f0;
+    text-align: center;
+  }
+  .curved-div h1 {
+    font-size: 2rem;
+    padding: 20px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  top-curved {
+    background-color: #e2e8f0;
+  }
+  
+  .curved-div button {
+    background-color: #fff;
+    color: black;
+    padding: 5px 20px;
+    border-radius: 9999px;
+    margin: 5px;
+  }
+  .curved-div button:hover {
+    background-color: #ecfdf5;
+    transition-duration: 0.5s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .AirLines button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media screen and (max-width: 780px) {
+    .AirLines button {
+      margin: 10px auto;
+    }
+  }

@@ -1,0 +1,83 @@
+
+/* PlaceCart.css */
+.bg-img {
+    background-image: url("https://img.freepik.com/free-photo/into-success-group-young-freelancers-office-have-conversation-smiling_146671-13567.jpg?w=996&t=st=1696675359~exp=1696675959~hmac=2911827d93aeb67e486756329a25ce9917d68a4024322953960507e813d4f0c3");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+    position: relative; /* Add position relative to allow absolute positioning */
+  }
+  
+  .text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    border: 4px solid transparent;
+    height: 75%;
+    border-image: linear-gradient(
+        45deg,
+        transparent 25%,
+        orange 25%,
+        orange 75%,
+        transparent 75%
+      )
+      4; /* Apply the border image */
+  }
+  
+  /* Add pseudo-elements for top-left and bottom-right corners */
+  .text-container::before,
+  .text-container::after {
+    content: "";
+    position: absolute;
+    width: 35%;
+    height: 35%;
+    border: 4px solid transparent; /* Set initial border with a transparent color */
+  }
+  
+  /* Style the top-left corner */
+  .text-container::before {
+    top: 0;
+    left: 0;
+    border-image-source: linear-gradient(
+      45deg,
+      transparent 25%,
+      orange 25%,u
+      orange 75%,
+      transparent 75%
+    );
+  }
+  
+  /* Style the bottom-right corner */
+  .text-container::after {
+    bottom: 0;
+    right: 0;
+    transform: rotate(
+      180deg
+    ); /* Rotate the bottom-right corner to match the top-left */
+    border-image-source: linear-gradient(
+      -135deg,
+      transparent 25%,
+      orange 25%,
+      orange 75%,
+      transparent 75%
+    );
+  }
+  
+  @media screen and (max-width: 780px) {
+    .bg-img {
+      height: 200px;
+    }
+    .text-container {
+      height: 100%;
+      width: 100%;
+    }
+  }
