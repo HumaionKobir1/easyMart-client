@@ -1,0 +1,63 @@
+.breadcum.v1 {
+    background-image: url('../../assets//images/breatcumb/img.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      opacity: 0.8;
+      background: rgb(33, 74, 87);
+      z-index: -1;
+    }
+    .text-xl-3 {
+      color: white;
+    }
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 5px;
+      color: white;
+      font-weight: 600;
+      &::before {
+        content: "\e923";
+        font-family: "icomoon";
+        speak: never;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: white;
+      }
+    }
+    li {
+      & ~ li {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        &::before {
+          content: "-";
+          color: white;
+        }
+      }
+    }
+    a {
+      display: block;
+      color: white;
+      &:hover {
+        color: orange;
+      }
+    }
+  }

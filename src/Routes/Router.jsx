@@ -5,6 +5,8 @@ import Main from "../layouts/Main";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
+import ViewDetails from "../pages/ViewDetails/ViewDetails";
 
   const router = createBrowserRouter([
     {
@@ -13,8 +15,13 @@ import SignUp from "../pages/SignUp/SignUp";
       children: [
         {
           path: '/',
-          element: <Home></Home>
+          element: <PrivateRoute><Home></Home></PrivateRoute>
         },
+        {
+          path: 'view-details/:id',
+          element: <ViewDetails></ViewDetails>,
+          loader: ({params})=> fetch(`http://localhost:5000/product/${params.id}`)
+        }
       ]
     },
     {
