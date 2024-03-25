@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Product from "../Product/Product";
+import Aos from "aos";
 
 const AllProducts = () => {
     const [productCategories, setProductCategories] = useState([]);
@@ -16,6 +17,10 @@ const AllProducts = () => {
     const handleTabClick = (tabName) => {
         setActiveTab(tabName);
       };
+      useEffect(() => {
+        Aos.init();
+        
+    }, [])
     return(
         <section className="all-products-section mt-10">
             <div className="container mx-auto">

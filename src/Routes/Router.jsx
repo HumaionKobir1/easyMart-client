@@ -11,6 +11,9 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import AllUsers from "../Dashboard/AllUsers/AllUsers";
 import ManageProducts from "../Dashboard/ManageProduct/ManageProduct";
 import AddProduct from "../Dashboard/AllProduct/AddProduct";
+import Contact from "../pages/Contact/Contact";
+import Blog from "../pages/Blog/Blog";
+import AllProductsPage from "../pages/AllProductPage/AllProductsPage";
 
   const router = createBrowserRouter([
     {
@@ -24,7 +27,19 @@ import AddProduct from "../Dashboard/AllProduct/AddProduct";
         {
           path: 'view-details/:id',
           element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-          loader: ({params})=> fetch(`https://easymart-server.vercel.app//product/${params.id}`)
+          loader: ({params})=> fetch(`https://easymart-server.vercel.app/product/${params.id}`)
+        },
+        {
+          path: '/contact',
+          element: <Contact></Contact>
+        },
+        {
+          path: '/blog',
+          element: <Blog></Blog>
+        },
+        {
+          path: '/all-product-page',
+          element: <AllProductsPage></AllProductsPage>
         }
       ]
     },

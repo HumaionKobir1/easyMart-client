@@ -1,0 +1,112 @@
+
+
+/*=====================
+    Contact section start
+=======================*/
+.contact {
+    &.v1 {
+      .category-list,
+      .category-list li,
+      .date li,
+      .social-link{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .category-list {
+        justify-content: space-between;
+        li {
+          & ~ li {
+            margin-top: 20px;
+          }
+          a {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 42px;
+            font-size: 15px;
+            border-radius: 50px;
+            background-color: black;
+            color: white;
+          }
+          &:hover{
+            a{
+              background-color: orange;
+            }
+          }
+        }
+      }
+      .section-title-white ~ .all-btns {
+        margin-top: 30px;
+      }
+      .date{
+        li{
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid gray;
+        }
+      }
+      .contact-form {
+        padding: 35px 30px;
+        border-radius: 5px;
+        background: white;
+        border: 1px solid gray;
+        .text-3 ~ .form-box {
+          margin-top: 20px;
+        }
+        .form-box {
+          & ~ .form-box {
+            margin-top: 20px;
+          }
+          input,
+          textarea {
+            width: 100%;
+            padding: 20px;
+            font-size: 16px;
+            border: 1px solid gray;
+            border-radius: 10px;
+          }
+          label {
+            font-size: 16px;
+            line-height: 26px;
+            font-weight: 700;
+            & ~ input,
+            & ~ textarea {
+              margin-top: 15px;
+            }
+          }
+          input {
+            height: 60px;
+          }
+          input[type="number"]::-webkit-inner-spin-button,
+          input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+          }
+          input[type="number"] {
+            -webkit-appearance: textfield;
+            -moz-appearance: textfield;
+            appearance: textfield;
+          }
+  
+          input[type="number"] {
+            user-select: none;
+          }
+          textarea {
+            height: 153px;
+          }
+          & ~ .btn-anime {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+    .contact-map iframe {
+        height: 446px;
+        width: 100%;
+        margin-bottom: -7px;
+      }
+}

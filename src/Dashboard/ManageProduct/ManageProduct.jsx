@@ -4,7 +4,7 @@ const ManageProducts = () => {
   const [showModal, setShowModal] = useState(false);
 const [product, setProduct] = useState([]);
 useEffect(() => {
-    fetch('https://easymart-server.vercel.app//products')
+    fetch('https://easymart-server.vercel.app/products')
         .then(res => res.json())
         .then(data => {
             setProduct(data);

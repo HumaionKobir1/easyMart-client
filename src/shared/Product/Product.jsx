@@ -1,14 +1,18 @@
 import { FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
 import { Link } from "react-router-dom";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import { useEffect } from "react";
+import Aos from "aos";
 
 const Product = ({productList}) => {
-    AOS.init()
+    useEffect(() => {
+        Aos.init();
+    }, [])
     const{product, _id, price_regular, price_discounted, review, images} = productList;
     return(
-        <div className="fade-up overflow-hidden rounded-md border p-2">
+        <div className=" overflow-hidden rounded-md border p-2" data-aos="fade-up"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="1000">
             <div className="flex gap-4 bg-[#77153db2] p-4">
                 <div className="w-[70%]">
                     <div className="main-img">

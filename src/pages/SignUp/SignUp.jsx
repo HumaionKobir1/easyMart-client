@@ -63,7 +63,7 @@ const SignUp = () => {
         }
         console.log(saveUser);
         // save user to db
-      fetch('https://easymart-server.vercel.app//users', {
+      fetch('https://easymart-server.vercel.app/users', {
         method: 'POST',
         headers: {
             'content-type' : 'application/json'
@@ -113,7 +113,7 @@ const SignUp = () => {
             role: 'admin'
     }
     // save user to db
-      fetch('https://easymart-server.vercel.app//users', {
+      fetch('https://easymart-server.vercel.app/users', {
         method: 'POST',
         headers: {
             'content-type' : 'application/json'

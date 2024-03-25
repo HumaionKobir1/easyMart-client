@@ -13,7 +13,7 @@ const NavbarItems = () => {
             </Link>
              
              <Link
-              to='/allProduct'
+              to='/all-product-page'
               className=' px-3 py-2 rounded-lg hover:bg-neutral-100  hover:text-black text-white transition font-semibold'
             >
               AllProducts

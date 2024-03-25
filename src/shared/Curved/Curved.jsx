@@ -28,7 +28,7 @@ const Curved = () => {
         <div
           data-aos="fade-up"
           data-aos-easing="ease-out-cubic"
-          data-aos-duration="2000"
+          data-aos-duration="1000"
         >
           <h1>Best Sale World Regions</h1>
         </div>

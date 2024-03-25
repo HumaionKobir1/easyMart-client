@@ -5,7 +5,7 @@ const AllUsers = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        fetch('https://easymart-server.vercel.app//users')
+        fetch('https://easymart-server.vercel.app/users')
         .then(res => res.json())
         .then(data => {
             setUsers(data);
