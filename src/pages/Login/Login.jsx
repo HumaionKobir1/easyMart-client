@@ -48,8 +48,20 @@ const Login = () => {
     }
 
   return (
-    <div className='flex justify-center items-center min-h-screen'>
+    <div className='flex gap-5 justify-center items-center min-h-screen'>
+      <div className=' w-[300px]'>
+              <h2 className='text-2xl text-center text-bold'>Demo User</h2>
+              <div className="border border-rose-600 p-5 mt-4">
+                <p className='text-lg text-gray-700'>admin5@gmail.com</p>
+                <p className='text-lg text-gray-700'><span className='font-bold'>password:</span> 12345hb</p>
+              </div>
+              <div className="border border-rose-600 p-5 mt-4">
+                <p className='text-lg text-gray-700'>customer@gmail.com</p>
+                <p className='text-lg text-gray-700'><span className='font-bold'>password:</span> 12345hb</p>
+              </div>
+            </div>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
+      
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Log In</h1>
           <p className='text-sm text-gray-400'>

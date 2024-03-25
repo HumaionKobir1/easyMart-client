@@ -27,10 +27,10 @@ const Banner = () => {
             <SwiperSlide>
                 <div className="banner1 lg:py-40">
                     <div className="container mx-auto">
-                        <div className="w-[37%]" data-aos="fade-right">
-                            <h6 className='text-2xl tracking-widest text-center text-gray-500'>Welcome To Fashion</h6>
+                        <div className="w-[50%]" data-aos="fade-right">
+                            <h6 className='text-2xl tracking-widest text-gray-500'>Welcome To Fashion</h6>
                             <h1 className='text-6xl mt-2 text-gray-800 font-bold'>MEN FASSHION</h1>
-                            <div className="btn text-center mt-5">
+                            <div className="btn mt-5">
                                 <button
                                     className='font-bold rounded-sm hover:bg-rose-900  bg-[#77153db2] px-4 py-2 text-white'
                                 >
