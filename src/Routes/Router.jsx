@@ -7,6 +7,10 @@ import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import ViewDetails from "../pages/ViewDetails/ViewDetails";
+import DashboardLayout from "../layouts/DashboardLayout";
+import AllUsers from "../Dashboard/AllUsers/AllUsers";
+import ManageProducts from "../Dashboard/ManageProduct/ManageProduct";
+import AddProduct from "../Dashboard/AllProduct/AddProduct";
 
   const router = createBrowserRouter([
     {
@@ -19,8 +23,8 @@ import ViewDetails from "../pages/ViewDetails/ViewDetails";
         },
         {
           path: 'view-details/:id',
-          element: <ViewDetails></ViewDetails>,
-          loader: ({params})=> fetch(`http://localhost:5000/product/${params.id}`)
+          element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
+          loader: ({params})=> fetch(`https://easymart-server.vercel.app//product/${params.id}`)
         }
       ]
     },
@@ -32,6 +36,25 @@ import ViewDetails from "../pages/ViewDetails/ViewDetails";
       path: '/signup',
       element: <SignUp></SignUp>
     },
+    {
+      path: '/dashboard',
+      element: <PrivateRoute><DashboardLayout
+      ></DashboardLayout></PrivateRoute>,
+      children: [
+        {
+          path: '/dashboard/all-users',
+          element: <PrivateRoute><AllUsers></AllUsers></PrivateRoute>
+        },
+        {
+          path: '/dashboard/manage-product',
+          element: <PrivateRoute><ManageProducts></ManageProducts></PrivateRoute>
+        },
+        {
+          path: '/dashboard/add-product',
+          element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
+        }
+      ]
+    }
   ]);
 
   export default router;

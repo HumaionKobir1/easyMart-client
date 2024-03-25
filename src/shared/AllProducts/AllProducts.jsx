@@ -5,7 +5,7 @@ const AllProducts = () => {
     const [productCategories, setProductCategories] = useState([]);
     const [activeTab, setActiveTab] = useState(' ')
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${activeTab}`)
+        fetch(`https://easymart-server.vercel.app/products/${activeTab}`)
         .then(res => res.json())
         .then(data => {
             setProductCategories(data);

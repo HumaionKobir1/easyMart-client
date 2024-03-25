@@ -2,24 +2,40 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { toast } from 'react-hot-toast'
 import signupImg from '../../assets/images/signup/signin.jpg'
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../providers/AuthProviders';
 import { TbFidgetSpinner } from 'react-icons/tb';
 
 const SignUp = () => {
-  const { setLoading, loading, signInWithGoogle, createUser, updateUserProfile} = useContext(AuthContext);
+  const { setLoading, loading, signInWithGoogle, createUser, updateUserData} = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
+  const [passwordError, setPasswordError] = useState('');
   const from = location.state?.from?.pathname || '/';
   const img_hosting_token = import.meta.env.VITE_IMGBB_KEY;
 
-  // Handle user registration
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    console.log(name)
+    setPasswordError(' ')
+
+        if (password.length < 6) {
+            setPasswordError('Password must be at least 6 characters long.')
+          }
+      
+          // Capital letter check
+          if (!/[A-Z]/.test(password)) {
+            setPasswordError('Password must contain at least one capital letter.')
+          }
+      
+          // Special character check
+          if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+            setPasswordError('Password must contain at least one special character.')
+          }
 
     // Image Upload
     const image = form.image.files[0]
@@ -37,22 +53,38 @@ const SignUp = () => {
       createUser(email, password)
       .then(result => {        
         console.log(result);
-        toast.success('SignUp successful')
-        navigate(from, {replace: true});
-        updateUserProfile(name, imageUrl)
+        updateUserData(result.user, name, imageUrl)
         .then(() => {
+        const saveUser = {
+                name: name,
+                email: email,
+                image: imageUrl,
+                role: 'customer'
+        }
+        console.log(saveUser);
         // save user to db
-          saveUser(result.user)
-        })
-        .catch(error => {
-            setLoading(false);
-            console.log(error.message)
-            toast.error(error.message);
-            
-        })
+      fetch('https://easymart-server.vercel.app//users', {
+        method: 'POST',
+        headers: {
+            'content-type' : 'application/json'
+        },
+        body: JSON.stringify(saveUser)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.insertedId){
+            toast.success('Login successful')
+        }
+      })
+        navigate(from, {replace: true});
+    })
+    .catch(error => {
+        setLoading(false);
+        toast.error(error.message);
+        
+    })
       })
       .catch(error => {
-          setLoading(false);
           console.log(error.message)
           toast.error(error.message);
           
@@ -72,8 +104,28 @@ const SignUp = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
     .then(result => {
-      // save user to db
-      saveUser(result.user)
+        const loggedUser = result.user;
+        console.log(loggedUser)
+        const saveUser = {
+            name: loggedUser.displayName,
+            email: loggedUser.email,
+            image: loggedUser.photoURL,
+            role: 'admin'
+    }
+    // save user to db
+      fetch('https://easymart-server.vercel.app//users', {
+        method: 'POST',
+        headers: {
+            'content-type' : 'application/json'
+        },
+        body: JSON.stringify(saveUser)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(data.insertedId){
+            toast.success('Login successful')
+        }
+      })
         navigate(from, {replace: true});
     })
     .catch(error => {
