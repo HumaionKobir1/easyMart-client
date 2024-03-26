@@ -176,7 +176,7 @@ const Sidebar = () => {
                 >
                   <SiGoogleclassroom className='w-5 h-5' />
 
-                  <span className='mx-4 font-medium'>My Selected Classes</span>
+                  <span className='mx-4 font-medium'>My Selected Product</span>
                 </NavLink>
 
                 <NavLink
@@ -189,7 +189,7 @@ const Sidebar = () => {
                 >
                   <SiGooglepodcasts className='w-5 h-5' />
 
-                  <span className='mx-4 font-medium'>My Enrolled Classes</span>
+                  <span className='mx-4 font-medium'>Shop product</span>
                 </NavLink>
 
                 <NavLink
